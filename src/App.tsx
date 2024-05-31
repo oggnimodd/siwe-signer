@@ -44,6 +44,7 @@ const SignInWithEthereum = () => {
   const { signMessageAsync } = useSignMessage();
   const [authenticated, setAuthenticated] = useState(false);
   const [signature, setSignature] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleConnect = async (walletId: WalletInfo["id"]) => {
     const walletInfo = Object.values(supportedWallets).find(
@@ -92,6 +93,9 @@ const SignInWithEthereum = () => {
       });
 
       const messageToSign = message.prepareMessage();
+
+      setMessage(messageToSign);
+
       const signature = await signMessageAsync({ message: messageToSign });
 
       setSignature(signature);
@@ -118,40 +122,66 @@ const SignInWithEthereum = () => {
   };
 
   return (
-    <div>
-      <span>
-        <strong>**</strong>Nonce can be a random string or a number without any
-        spaces or special characters and shoule be larger than 7 characters
-      </span>
+    <div className="min-h-screen p-20 w-full">
+      <div className="max-w-lg mx-auto">
+        <span>
+          <strong>**</strong>Nonce can be a random string or a number without
+          any spaces or special characters and shoule be larger than 7
+          characters
+        </span>
 
-      <br />
-      <br />
+        <br />
+        <br />
 
-      {!isConnected ? (
-        <>
-          <button onClick={() => handleConnect("io.metamask")}>
-            Connect Metamask
-          </button>
-          <button onClick={() => handleConnect("com.coinbase.wallet")}>
-            Connect Coinbase
-          </button>
-        </>
-      ) : authenticated ? (
-        <div>
-          <p>Authenticated: {address}</p>
-          <button onClick={handleDisconnect}>Disconnect</button>
-        </div>
-      ) : (
-        <div>
-          <input type="text" placeholder="Nonce" ref={nonceRef} />
+        {!isConnected ? (
+          <div className="flex gap-x-3">
+            <button onClick={() => handleConnect("io.metamask")}>
+              Connect Metamask
+            </button>
+            <button onClick={() => handleConnect("com.coinbase.wallet")}>
+              Connect Coinbase
+            </button>
+          </div>
+        ) : authenticated ? (
+          <div>
+            <p>Authenticated: {address}</p>
+            <button onClick={handleDisconnect}>Disconnect</button>
+          </div>
+        ) : (
+          <div>
+            <input
+              className="border-2 border-black px-3 py-2 rounded-sm"
+              type="text"
+              placeholder="Nonce"
+              ref={nonceRef}
+            />
 
-          <button onClick={generateSignature}>Generate signature</button>
+            <button onClick={generateSignature}>Generate signature</button>
 
-          {signature && <p id="signature">{signature}</p>}
+            <br />
+            {signature && (
+              <>
+                <span className="font-bold"> Signature:</span>
+                <p className="w-96 mb-3 break-words" id="signature">
+                  {signature}
+                </p>
+              </>
+            )}
 
-          <button onClick={handleDisconnect}>Disconnect</button>
-        </div>
-      )}
+            <br />
+            {message && (
+              <>
+                <span className="font-bold mt-4"> Message:</span>
+                <p className="w-96 text-wrap" id="message">
+                  {message}
+                </p>
+              </>
+            )}
+
+            <button onClick={handleDisconnect}>Disconnect</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

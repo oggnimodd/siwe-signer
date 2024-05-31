@@ -1,4 +1,6 @@
-#signature{
-    width: 150px;
-    text-wrap: nowrap;
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: black;
+    color: white;
 }
