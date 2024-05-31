@@ -159,7 +159,7 @@ const SignInWithEthereum = () => {
             <button onClick={generateSignature}>Generate signature</button>
 
             {address && (
-              <div className="mt-4">
+              <div className="mt-2">
                 <span className="font-bold"> Address:</span>
                 <p className="text-wrap" id="message">
                   {address}
@@ -169,7 +169,7 @@ const SignInWithEthereum = () => {
 
             <br />
             {message && (
-              <div className="my-4">
+              <div className="my-2">
                 <span className="font-bold"> Message:</span>
                 <p className="text-wrap" id="message">
                   {message}
@@ -180,7 +180,7 @@ const SignInWithEthereum = () => {
             <br />
 
             {signature && (
-              <div className="mb-4">
+              <div className="mb-2">
                 <span className="font-bold"> Signature:</span>
                 <p className="break-words" id="signature">
                   {signature}
