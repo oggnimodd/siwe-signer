@@ -158,11 +158,20 @@ const SignInWithEthereum = () => {
 
             <button onClick={generateSignature}>Generate signature</button>
 
+            {address && (
+              <div className="mt-4">
+                <span className="font-bold"> Address:</span>
+                <p className="text-wrap" id="message">
+                  {address}
+                </p>
+              </div>
+            )}
+
             <br />
             {message && (
               <div className="my-4">
-                <span className="font-bold my-4"> Message:</span>
-                <p className="w-96 text-wrap" id="message">
+                <span className="font-bold"> Message:</span>
+                <p className="text-wrap" id="message">
                   {message}
                 </p>
               </div>
@@ -173,7 +182,7 @@ const SignInWithEthereum = () => {
             {signature && (
               <div className="mb-4">
                 <span className="font-bold"> Signature:</span>
-                <p className="w-96 break-words" id="signature">
+                <p className="break-words" id="signature">
                   {signature}
                 </p>
               </div>
