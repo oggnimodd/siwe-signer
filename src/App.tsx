@@ -179,7 +179,7 @@ const SignInWithEthereum = () => {
               <div className="my-2">
                 <span className="font-bold"> Message:</span>
                 <p className="text-wrap" id="message">
-                  {message}
+                  {message.replace(/\n/g, "\\n")}
                 </p>
               </div>
             )}
