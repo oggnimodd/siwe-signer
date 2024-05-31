@@ -159,23 +159,24 @@ const SignInWithEthereum = () => {
             <button onClick={generateSignature}>Generate signature</button>
 
             <br />
-            {signature && (
-              <>
-                <span className="font-bold"> Signature:</span>
-                <p className="w-96 mb-3 break-words" id="signature">
-                  {signature}
-                </p>
-              </>
-            )}
-
-            <br />
             {message && (
-              <>
-                <span className="font-bold mt-4"> Message:</span>
+              <div className="my-4">
+                <span className="font-bold my-4"> Message:</span>
                 <p className="w-96 text-wrap" id="message">
                   {message}
                 </p>
-              </>
+              </div>
+            )}
+
+            <br />
+
+            {signature && (
+              <div className="mb-4">
+                <span className="font-bold"> Signature:</span>
+                <p className="w-96 break-words" id="signature">
+                  {signature}
+                </p>
+              </div>
             )}
 
             <button onClick={handleDisconnect}>Disconnect</button>
