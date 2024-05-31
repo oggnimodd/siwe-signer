@@ -98,6 +98,8 @@ const SignInWithEthereum = () => {
 
       const messageToSign = message.prepareMessage();
 
+      console.log(messageToSign.replace(/\n/g, "\\n"));
+
       setMessage(messageToSign);
 
       const signature = await signMessageAsync({ message: messageToSign });
