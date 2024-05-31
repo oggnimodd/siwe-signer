@@ -67,6 +67,10 @@ const SignInWithEthereum = () => {
         connector: walletInfo?.connector ? walletInfo.connector() : connector,
       });
 
+      // Clean states
+      setSignature("");
+      setMessage("");
+
       // router.replace("/");
     } catch (error) {
       console.log(error);
