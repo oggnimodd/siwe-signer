@@ -122,11 +122,11 @@ const SignInWithEthereum = () => {
   };
 
   return (
-    <div className="min-h-screen p-20 w-full">
+    <div className="min-h-screen p-10 sm:p-20 w-full">
       <div className="max-w-lg mx-auto">
         <span>
           <strong>**</strong>Nonce can be a random string or a number without
-          any spaces or special characters and shoule be larger than 7
+          any spaces or special characters and should be larger than 7
           characters
         </span>
 
@@ -150,6 +150,7 @@ const SignInWithEthereum = () => {
         ) : (
           <div>
             <input
+              autoFocus
               className="border-2 border-black px-3 py-2 rounded-sm"
               type="text"
               placeholder="Nonce"
