@@ -125,9 +125,9 @@ const SignInWithEthereum = () => {
     <div className="min-h-screen p-10 sm:p-20 w-full">
       <div className="max-w-lg mx-auto">
         <span>
-          <strong>**</strong>Nonce can be a random string or a number without
-          any spaces or special characters and should be larger than 7
-          characters
+          <strong className="text-red-500">**</strong>Nonce can be a random
+          string or a number without any spaces or special characters and should
+          be larger than 7 characters
         </span>
 
         <br />
